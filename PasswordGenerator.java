@@ -1,10 +1,10 @@
 import java.security.SecureRandom;
 
 public class PasswordGenerator {
-    private static final String UPPER = "ABCDEFGHIJKLMOPQRSTUVWXYZ";
-    private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
-    private static final String DIGITS = "0123456789";
-    private static final String SPECIAL = "!@#$%^&*()-_=+[]{}|;:,.<>?";
+    public static final String UPPER = "ABCDEFGHIJKLMOPQRSTUVWXYZ";
+    public static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
+    public static final String DIGITS = "0123456789";
+    public static final String SPECIAL = "!@#$%^&*()-_=+[]{}|;:,.<>?";
 
     private static final String ALL_CHARACTERS = UPPER + LOWER + DIGITS + SPECIAL;
     private static final SecureRandom RANDOM = new SecureRandom();

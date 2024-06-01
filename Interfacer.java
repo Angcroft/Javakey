@@ -19,6 +19,7 @@ public class Interfacer {
         System.out.println("2. Lower");
         System.out.println("3. Digit");
         System.out.println("4. Special");
+        System.out.println("5. Cancel");
     }
 
     public static void adder() {
@@ -27,6 +28,7 @@ public class Interfacer {
         System.out.println("2. Lower");
         System.out.println("3. Digit");
         System.out.println("4. Special");
+        System.out.println("5. Cancel");
     }
 
     public static void passGenerated() {

@@ -1,156 +1,202 @@
 import java.util.Scanner;
 
 public class JavaKey {
+    
+    //  Welcomer
+    public static final int GENERATE_PASSWORD = 1;
+    public static final int CUSTOMIZE_SETTINGS = 2;
+    public static final int EXIT_PROGRAM = 3;
+
+    //  Customizer
+    public static final int REMOVE_CHARACTERS = 1;
+    public static final int ADD_CHARACTERS = 2;
+    public static final int RETURN_TO_MAIN_MENU = 3;
+
+    //  Substracter
+    public static final int REMOVE_UPPERCASE = 1;
+    public static final int REMOVE_LOWERCASE = 2;
+    public static final int REMOVE_DIGITS = 3;
+    public static final int REMOVE_SPECIAL = 4;
+    public static final int REMOVE_RETURN_TO_MAIN_MENU = 5;
+
+    //  Adder
+    public static final int ADD_UPPERCASE = 1;
+    public static final int ADD_LOWERCASE = 2;
+    public static final int ADD_DIGITS = 3;
+    public static final int ADD_SPECIAL = 4;
+    public static final int ADD_RETURN_TO_MAIN_MENU = 5;
+
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
         while(true) {
             Interfacer.welcomer();
+            int indexnumber = getUserChoice(scanner);
 
-            Scanner indexer = new Scanner(System.in);
-            String index = indexer.nextLine();
-            int indexnumber = Integer.parseInt(index);
-            
-            if(indexnumber < 1 || indexnumber > 3) {
-                System.out.println("Invalid option. Please enter a correct number: ");
-                continue;
-            }
-
-            if(indexnumber == 1) {
-                int passwordLength = 16;
-                String password = PasswordGenerator.generatePassword(passwordLength);
-                System.out.println("Generated Password: " + password);
-                
-                Interfacer.passGenerated();
-
-                String indexnew = indexer.nextLine();
-                int indexnewnumb = Integer.parseInt(indexnew);
-
-                if(indexnewnumb < 1 || indexnewnumb > 3) {
-                    System.out.println("Invalid option. Please enter a correct number: ");
-                    continue;
-                }
-
-                if(indexnewnumb == 1) {
-
-                } else if(indexnewnumb == 2) {
-
-                } else if(indexnewnumb == 3) {
+            switch(indexnumber) {
+                case GENERATE_PASSWORD:
+                    generatePassword(scanner);
+                    break;
+                case CUSTOMIZE_SETTINGS:
+                    customizeSettings(scanner);
+                    break;
+                case EXIT_PROGRAM:
+                    scanner.close();
                     System.exit(0);
-                }
-            }
-
-            if(indexnumber == 2) {
-                Interfacer.customizer();
-
-                String indextwo = indexer.nextLine();
-                int indexnumbertwo = Integer.parseInt(indextwo);
-
-                if(indexnumbertwo < 1 || indexnumbertwo > 3) {
-                    System.out.println("Invalid option. Please enter a correct number: ");
-                    continue;
-                }
-
-                if(indexnumbertwo == 1) {
-                    Interfacer.substracter();
-
-                    String indexsub = indexer.nextLine();
-                    int indexnumbersub = Integer.parseInt(indexsub);
-                    
-                    if(indexnumbersub < 1 || indexnumbersub > 4) {
-                        System.out.println("Invalid option. Please enter a correct number: ");
-                        continue;
-                    }
-
-                    if(indexnumbersub == 1) {
-                        System.out.println("Now enter the uppercases you want to remove: ");
-
-                        String upperCasers = indexer.nextLine();
-                        
-                        PasswordGenerator.UPPER.replace(upperCasers, "");
-                        
-
-                    } else if (indexnumbersub == 2) {
-                        System.out.println("Now enter the lowercases you want to remove: ");
-
-                        String lowerCasers = indexer.nextLine();
-
-                        PasswordGenerator.LOWER.replace(lowerCasers, "");
-
-                    } else if (indexnumbersub == 3) {
-                        System.out.println("Now enter the digits you want to remove: ");
-
-                        String digiters = indexer.nextLine();
-
-                        PasswordGenerator.DIGITS.replace(digiters, "");
-
-                    } else if (indexnumbersub == 4) {
-                        System.out.println("Now enter the special characters you want to remove: ");
-
-                        String spcharacters = indexer.nextLine();
-
-                        PasswordGenerator.SPECIAL.replace(spcharacters, "");
-
-                    }
-                }
-
-                if(indexnumbertwo == 2) {
-                    Interfacer.adder();
-
-                    String indexadd = indexer.nextLine();
-                    int indexnumberadd = Integer.parseInt(indexadd);
-
-                    if(indexnumberadd < 1 || indexnumberadd > 4) {
-                        System.out.println("Invalid option. Please enter a correct number: ");
-                        continue;
-                    }
-
-                    if(indexnumberadd == 1) {
-                        StringBuilder new_upper = new StringBuilder(PasswordGenerator.UPPER);
-                        System.out.println("Now enter the uppercases you want to add: ");
-
-                        String upperCasers = indexer.nextLine();
-
-                        new_upper.insert(0, upperCasers);
-
-                        System.out.println("The following Uppercases has been added: " + upperCasers);
-
-                    } else if(indexnumberadd == 2) {
-                        StringBuilder new_lower = new StringBuilder(PasswordGenerator.LOWER);
-                        System.out.println("Now enter the lowercases you want to add: ");
-
-                        String lowerCasers = indexer.nextLine();
-
-                        new_lower.insert(0, lowerCasers);
-
-                        System.out.println("The following Lowercases has been added: " + lowerCasers);
-
-                    } else if(indexnumberadd == 3) {
-                        StringBuilder new_digits = new StringBuilder(PasswordGenerator.DIGITS);
-                        System.out.println("Now enter the digits you want to add: ");
-
-                        String digiters = indexer.nextLine();
-                        
-                        new_digits.insert(0, digiters);
-
-                        System.out.println("The following Digits has been added: " + digiters);
-
-                    } else if(indexnumberadd == 4) {
-                        StringBuilder new_special = new StringBuilder(PasswordGenerator.SPECIAL);
-                        System.out.println("Now enter the special characters you want to add");
-
-                        String spcharacters = indexer.nextLine();
-
-                        new_special.insert(0, spcharacters);
-
-                        System.out.println("The following Special characters has been added: " + spcharacters);
-
-                    }
-                }
-            }
-
-            if(indexnumber == 3) {
-                System.exit(0);
+                    break;
+                default:
+                    System.out.println("Invalid option. Please enter a correct number.");
             }
         }
+    }
+
+    private static int getUserChoice(Scanner scanner) {
+        try {
+            return Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            return -1;  //  Invalid input
+        }
+    }
+
+    private static void generatePassword(Scanner scanner) {
+        int passwordLength = 16;
+
+        String password = PasswordGenerator.generatePassword(passwordLength);
+        System.out.println("Generated password: " + password);
+
+        Interfacer.passGenerated();
+        int indexnewnumb = getUserChoice(scanner);
+
+        switch (indexnewnumb) {
+            case 1: //  Handle case 1 if needed
+                break;
+            case 2: //  Handle case 2 if needed
+                break;
+            case 3:
+                scanner.close();
+                System.exit(0);
+                break;
+            default:
+                System.out.println("Invalid option. Please enter a correct number");
+        }
+    }
+
+    private static void customizeSettings(Scanner scanner) {
+        Interfacer.customizer();
+        int indexNumberTwo = getUserChoice(scanner);
+
+        switch (indexNumberTwo) {
+            case REMOVE_CHARACTERS:
+                handleRemoveCharacters(scanner);
+                break;
+            case ADD_CHARACTERS:
+                handleAddCharacters(scanner);
+                break;
+            case RETURN_TO_MAIN_MENU:
+                break;
+            default:
+                System.out.println("Invalid option. Please enter a correct number");
+        }
+    }
+
+    private static void handleRemoveCharacters(Scanner scanner) {
+        Interfacer.substracter();
+        int indexNumberSub = getUserChoice(scanner);
+
+        switch (indexNumberSub) {
+            case REMOVE_UPPERCASE:
+                System.out.println("Now enter the uppercases you want to remove: ");
+                String upperCasers = scanner.nextLine();
+                PasswordGenerator.UPPER.replace(upperCasers.toUpperCase(), "");
+                break;
+            case REMOVE_LOWERCASE:
+                System.out.println("Now enter the lowercases you want to remove: ");
+                String lowerCasers = scanner.nextLine();
+                PasswordGenerator.LOWER.replace(lowerCasers.toLowerCase(), "");
+                break;
+            case REMOVE_DIGITS:
+                System.out.println("Now enter the digits you want to remove: ");
+                String digiters = scanner.nextLine();
+                PasswordGenerator.DIGITS.replace(digiters, "");
+                break;
+            case REMOVE_SPECIAL:
+                System.out.println("Now enter the special characters you want to remove: ");
+                String spCharacters = scanner.nextLine();
+                PasswordGenerator.SPECIAL.replace(spCharacters, "");
+                break;
+            case REMOVE_RETURN_TO_MAIN_MENU:
+                break;
+            default:
+                System.out.println("Invalid option. Please enter a correct number.");
+        }
+    }
+
+    private static void handleAddCharacters(Scanner scanner) {
+        Interfacer.adder();
+        int indexNumberAdd = getUserChoice(scanner);
+
+        switch (indexNumberAdd) {
+            case ADD_UPPERCASE:
+                System.out.println("Now enter the uppercases you want to add: ");
+                String upperCasers = scanner.nextLine().toUpperCase();
+                
+                while (!isValid(upperCasers, PasswordGenerator.UPPER)) {
+                    System.out.println("Invalid input. Only uppercases are allowed.");
+                    System.out.println("Now enter the uppercases you want to add: ");
+                    upperCasers = scanner.nextLine().toUpperCase();
+                }
+                PasswordGenerator.LOWER += upperCasers;
+                System.out.println("The following uppercases have been added: " + upperCasers);
+                break;
+            case ADD_LOWERCASE:
+                System.out.println("Now enter the lowercases you want to add: ");
+                String lowerCasers = scanner.nextLine().toLowerCase();
+                
+                while (!isValid(lowerCasers, PasswordGenerator.LOWER)) {
+                    System.out.println("Invalid input. Only lowercases are allowed.");
+                    System.out.println("Now enter the lowercases you want to add: ");
+                    lowerCasers = scanner.nextLine().toLowerCase();
+                }
+                PasswordGenerator.LOWER += lowerCasers;
+                System.out.println("The following lowercases have been added: " + lowerCasers);
+                break;
+            case ADD_DIGITS:
+                System.out.println("Now enter the digits you want to add: ");
+                String digiters = scanner.nextLine();
+                
+                while (!isValid(digiters, PasswordGenerator.DIGITS)) {
+                    System.out.println("Invalid input. Only digits are allowed.");
+                    System.out.println("Now enter the digits you want to add: ");
+                    digiters = scanner.nextLine();
+                }
+                PasswordGenerator.DIGITS += digiters;
+                System.out.println("The following digits have been added: " + digiters);
+                break;
+            case ADD_SPECIAL:
+                System.out.println("Now enter the special characters you want to add: ");
+                String spCharacters = scanner.nextLine();
+
+                while (!isValid(spCharacters, PasswordGenerator.SPECIAL)) {
+                    System.out.println("Invalid input. Only special characters are allowed.");
+                    System.out.println("Now enter the special characters you want to add: ");
+                    spCharacters = scanner.nextLine();
+                }
+                PasswordGenerator.SPECIAL += spCharacters;
+                System.out.println("The following special characters have been added: " + spCharacters);
+                break;
+            case ADD_RETURN_TO_MAIN_MENU:
+                break;
+            default:
+                System.out.println("Invalid option. Please enter a correct number.");
+        }
+    }
+
+    private static boolean isValid(String input, String validCharacters) {
+        for (char c : input.toCharArray()) {
+            if (validCharacters.indexOf(c) == -1) {
+                return false;
+            }
+        }
+        return true;
     }
 }

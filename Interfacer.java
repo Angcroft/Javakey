@@ -28,4 +28,11 @@ public class Interfacer {
         System.out.println("3. Digit");
         System.out.println("4. Special");
     }
+
+    public static void passGenerated() {
+        System.out.println("Password generated. What you want to do next?: ");
+        System.out.println("1. Generate another password");
+        System.out.println("2. Personalize password");
+        System.out.println("3. Exit");
+    }
 }

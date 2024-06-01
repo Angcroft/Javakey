@@ -19,7 +19,16 @@ public class JavaKey {
                 int passwordLength = 16;
                 String password = PasswordGenerator.generatePassword(passwordLength);
                 System.out.println("Generated Password: " + password);
-                break;
+                
+                Interfacer.passGenerated();
+
+                String indexnew = indexer.nextLine();
+                int indexnewnumb = Integer.parseInt(indexnew);
+
+                if(indexnewnumb < 1 || indexnewnumb > 3) {
+                    System.out.println("Invalid option. Please enter a correct number: ");
+                    continue;
+                }
             }
 
             if(indexnumber == 2) {
@@ -43,6 +52,30 @@ public class JavaKey {
                         System.out.println("Invalid option. Please enter a correct number: ");
                         continue;
                     }
+
+                    if(indexnumbersub == 1) {
+                        System.out.println("Now enter the uppercases you want to remove: ");
+
+                        String upperCasers = indexer.nextLine();
+                        
+
+                    } else if (indexnumbersub == 2) {
+                        System.out.println("Now enter the lowercases you want to remove: ");
+
+                        String lowerCasers = indexer.nextLine();
+
+                    } else if (indexnumbersub == 3) {
+                        System.out.println("Now enter the digits you want to remove: ");
+
+                        String digiters = indexer.nextLine();
+                        int digitersints = Integer.parseInt(digiters);
+
+                    } else if (indexnumbersub == 4) {
+                        System.out.println("Now enter the special characters you want to remove: ");
+
+                        String espcharacters = indexer.nextLine();
+
+                    }
                 }
 
                 if(indexnumbertwo == 2) {
@@ -53,6 +86,30 @@ public class JavaKey {
 
                     if(indexnumberadd < 1 || indexnumberadd > 4) {
                         System.out.println("Invalid option. Please enter a correct number: ");
+                        continue;
+                    }
+
+                    if(indexnumberadd == 1) {
+                        System.out.println("Now enter the uppercases you want to add: ");
+
+                        String upperCasers = indexer.nextLine();
+
+                    } else if(indexnumberadd == 2) {
+                        System.out.println("Now enter the lowercases you want to add: ");
+
+                        String lowerCasers = indexer.nextLine();
+
+                    } else if(indexnumberadd == 3) {
+                        System.out.println("Now enter the digits you want to add: ");
+
+                        String digiters = indexer.nextLine();
+                        int digitersints = Integer.parseInt(digiters);
+
+                    } else if(indexnumberadd == 4) {
+                        System.out.println("Now enter the special characters you want to add");
+
+                        String espcharacters = indexer.nextLine();
+
                     }
                 }
             }

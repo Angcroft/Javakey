@@ -106,23 +106,27 @@ public class JavaKey {
         switch (indexNumberSub) {
             case REMOVE_UPPERCASE:
                 System.out.println("Now enter the uppercases you want to remove: ");
-                String upperCasers = scanner.nextLine();
-                PasswordGenerator.UPPER.replace(upperCasers.toUpperCase(), "");
+                String upperCasers = scanner.nextLine().toUpperCase();
+                PasswordGenerator.UPPER.replace(upperCasers, "");
+                System.out.println("The following uppercases have been deleted: " + upperCasers);
                 break;
             case REMOVE_LOWERCASE:
                 System.out.println("Now enter the lowercases you want to remove: ");
-                String lowerCasers = scanner.nextLine();
+                String lowerCasers = scanner.nextLine().toLowerCase();
                 PasswordGenerator.LOWER.replace(lowerCasers.toLowerCase(), "");
+                System.out.println("The following lowercases have been deleted: " + lowerCasers.toLowerCase());
                 break;
             case REMOVE_DIGITS:
                 System.out.println("Now enter the digits you want to remove: ");
                 String digiters = scanner.nextLine();
                 PasswordGenerator.DIGITS.replace(digiters, "");
+                System.out.println("The following digits have been deleted: " + digiters);
                 break;
             case REMOVE_SPECIAL:
                 System.out.println("Now enter the special characters you want to remove: ");
                 String spCharacters = scanner.nextLine();
                 PasswordGenerator.SPECIAL.replace(spCharacters, "");
+                System.out.println("The following special characters have been deleted: " + spCharacters);
                 break;
             case REMOVE_RETURN_TO_MAIN_MENU:
                 break;
